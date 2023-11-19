@@ -121,6 +121,53 @@ function calcularTotal(input, totalSelector, valorAsignadoSelector, valorMaximo,
 
 const grupoTotales = [];
 
+//Funcion para enviar los datos
+
+    document.getElementById('enviarDatos').addEventListener('click', function () {
+      //Totales de cada tabla
+      const nombreInput = document.getElementById("nombre");
+
+      const totalAValue = document.querySelector('.total-a-titulo').textContent;
+      const totalBValue = document.querySelector('.total-b-formacion-posterior').textContent;
+      const totalCValue = document.querySelector('.total-c-antiguedad-docente').textContent;
+      const totalDValue = document.querySelector('.total-d-participacion-eventos').textContent;
+      const totalEValue = document.querySelector('.total-e-elaboracion-y-dictados').textContent;
+      const totalFValue = document.querySelector('.total-f-trabajos-de-investigacion').textContent;
+      const totalGValue = document.querySelector('.total-g-publicaciones').textContent;
+      const totalHValue = document.querySelector('.total-h-asistencia-a-cursos').textContent;
+      const totalIValue = document.querySelector('.total-i-desempeño-laborales').textContent;
+      const totalJValue = document.querySelector('.total-j-gestion-superior').textContent;
+      const totalKValue = document.querySelector('.total-k-otras-actividades').textContent;
+      const totalLValue = document.querySelector('.total-l-desempeño-laboral-especifico').textContent;
+      const totalValue = document.querySelector('.total-promedio').textContent;
+
+
+      const data = { 
+        nombreDocente: nombreInput.value,
+        totalA: totalAValue, totalB: totalBValue, totalC: totalCValue, totalD: totalDValue,
+        totalE: totalEValue, totalF: totalFValue, totalG: totalGValue, totalH: totalHValue,
+        totalI: totalIValue, totalJ: totalJValue, totalK: totalKValue, totalL: totalLValue,
+        total:totalValue,
+      };
+
+      // Realizar la solicitud POST al servidor
+      fetch('/api/enviarDatos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    });
+
+
     
 
 

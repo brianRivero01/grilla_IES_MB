@@ -12,14 +12,29 @@
     <img src="img/onlylogo.png" alt="">
     <h1 class="h3">GRILLA DE TABULACION DE ANTECEDENTES - DESARROLLO DE SOFTWARE</h1>
   </header>
-
-  <div class="container mt-5">
-    <h2 class="h2">NOMBRE DEL PROFESOR</h2>
+  <div class="container">
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="nosotros.html">¿Quiénes somos?</a>
+        <a href="direccion.html">Dirección</a>
+    </nav>
+  </div>
+  <div class="container mt-5"> 
     <form>
-        <div class="col-md-6 mb-3">
-            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese su nombre">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <h2 class="h4">Nombre del profesor</h2>
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese su nombre">
+            </div>
+            <div class="col-md-6 mb-3">
+                <h2 class="h4">DNI</h2>
+                <input type="text" class="form-control" id="dni" name="dni" placeholder="Ingrese su DNI" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+            </div>
         </div>
     </form>
+</div>
+
+  <div class="container mt-5">
     <!-- Utiliza la clase "table" para definir la tabla -->
     <table class="table table-bordered">
       <thead>
@@ -674,60 +689,12 @@
         </tr>
       </tbody> 
     </table>
-    <button id="enviarDatos">Enviar</button>
+    <button class="enviar" id="enviarDatos">Enviar</button>
   </div>
 
   <!-- Agrega los scripts de Bootstrap (requiere jQuery) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
   <script src="script/script.js"></script>
-
-
-  <script>
-    document.getElementById('enviarDatos').addEventListener('click', function () {
-      //Totales de cada tabla
-      const nombreInput = document.getElementById("nombre");
-
-      const totalAValue = document.querySelector('.total-a-titulo').textContent;
-      const totalBValue = document.querySelector('.total-b-formacion-posterior').textContent;
-      const totalCValue = document.querySelector('.total-c-antiguedad-docente').textContent;
-      const totalDValue = document.querySelector('.total-d-participacion-eventos').textContent;
-      const totalEValue = document.querySelector('.total-e-elaboracion-y-dictados').textContent;
-      const totalFValue = document.querySelector('.total-f-trabajos-de-investigacion').textContent;
-      const totalGValue = document.querySelector('.total-g-publicaciones').textContent;
-      const totalHValue = document.querySelector('.total-h-asistencia-a-cursos').textContent;
-      const totalIValue = document.querySelector('.total-i-desempeño-laborales').textContent;
-      const totalJValue = document.querySelector('.total-j-gestion-superior').textContent;
-      const totalKValue = document.querySelector('.total-k-otras-actividades').textContent;
-      const totalLValue = document.querySelector('.total-l-desempeño-laboral-especifico').textContent;
-      const totalValue = document.querySelector('.total-promedio').textContent;
-
-
-      const data = { 
-        nombreDocente: nombreInput.value,
-        totalA: totalAValue, totalB: totalBValue, totalC: totalCValue, totalD: totalDValue,
-        totalE: totalEValue, totalF: totalFValue, totalG: totalGValue, totalH: totalHValue,
-        totalI: totalIValue, totalJ: totalJValue, totalK: totalKValue, totalL: totalLValue,
-        total:totalValue,
-      };
-
-      // Realizar la solicitud POST al servidor
-      fetch('/api/enviarDatos', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    });
-  </script>
-  
 </body>
 </html>

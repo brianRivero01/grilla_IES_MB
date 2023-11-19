@@ -1,8 +1,11 @@
 body {
+    height: 100vh;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #02081630
+    background-color: #02081630;
+
+
   }
 
   .header {
@@ -85,3 +88,90 @@ body {
     transform: scale(1.1);
     transition: transform 0.2s ease-in-out;
   }
+
+  .container {
+    margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+}
+
+.enviar{
+  background-color: #2E70FD;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      margin-bottom: 15px;
+      margin-left:500px ;
+
+}
+.enviar:hover{
+    background-color: #0051FF;
+}
+
+
+
+
+
+nav {
+    background-color: #f8f9fa; /* Ajusta el color de fondo según sea necesario */
+    padding: 10px; /* Ajusta el relleno según sea necesario */
+}
+
+nav a {
+    margin-right: 15px; /* Ajusta el margen derecho entre los enlaces según sea necesario */
+    text-decoration: none; /* Elimina la subrayado predeterminada de los enlaces */
+}
+
+/*estilo del login*/
+
+    .login {
+      font-family: Arial, sans-serif;
+      background-color: #f1f5f5
+    }
+
+    .contenedor-login {
+      width: 300px;
+      margin:  auto;
+      padding: 20px;
+      background-color: #ABF5F5;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .contenedor-login label {
+      display: block;
+      margin-bottom: 4px;
+      margin-top: 30px;
+      text-align: center;
+    }
+    input:hover{
+        border-color: #3498db;
+    }
+    .contenedor-login input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+      border-radius: 10px;
+      
+    }
+
+    .contenedor-login button {
+      background-color: #2E70FD;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .contenedor-login button:hover {
+      background-color: #0051FF;
+    }
+
+    .imagen-login{
+        width: 150px;
+        height: auto;
+    }
+    
