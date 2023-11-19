@@ -126,6 +126,7 @@ const grupoTotales = [];
     document.getElementById('enviarDatos').addEventListener('click', function () {
       //Totales de cada tabla
       const nombreInput = document.getElementById("nombre");
+      const dniInput= document.getElementById('dni');
 
       const totalAValue = document.querySelector('.total-a-titulo').textContent;
       const totalBValue = document.querySelector('.total-b-formacion-posterior').textContent;
@@ -144,6 +145,7 @@ const grupoTotales = [];
 
       const data = { 
         nombreDocente: nombreInput.value,
+        dniDocente: dniInput.value,
         totalA: totalAValue, totalB: totalBValue, totalC: totalCValue, totalD: totalDValue,
         totalE: totalEValue, totalF: totalFValue, totalG: totalGValue, totalH: totalHValue,
         totalI: totalIValue, totalJ: totalJValue, totalK: totalKValue, totalL: totalLValue,

@@ -5,19 +5,20 @@ const createTableSql = `
   CREATE TABLE IF NOT EXISTS grilla (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
-    total_promedio INT NOT NULL,
-    total_a_titulo INT NOT NULL,
-    total_b_formacion_posterior INT NOT NULL,
-    total_c_antiguedad INT NOT NULL,
-    total_d_participacion_eventos INT NOT NULL,
-    total_e_elaboracion_y_dictado INT NOT NULL,
-    total_f_trabajos_investigacion INT NOT NULL,
-    total_g_publicaciones INT NOT NULL,
-    total_h_asistencias INT NOT NULL,
-    total_i_otros_desempeños INT NOT NULL,
-    total_j_cargos INT NOT NULL,
-    total_k_otras_actividades INT NOT NULL,
-    total_l_desempeños_especificos INT NOT NULL
+    dni VARCHAR(25) NOT NULL,
+    total_promedio DOUBLE NOT NULL,
+    total_a_titulo DOUBLE NOT NULL,
+    total_b_formacion_posterior DOUBLE NOT NULL,
+    total_c_antiguedad DOUBLE NOT NULL,
+    total_d_participacion_eventos DOUBLE NOT NULL,
+    total_e_elaboracion_y_dictado DOUBLE NOT NULL,
+    total_f_trabajos_investigacion DOUBLE NOT NULL,
+    total_g_publicaciones DOUBLE NOT NULL,
+    total_h_asistencias DOUBLE NOT NULL,
+    total_i_otros_desempeños DOUBLE NOT NULL,
+    total_j_cargos DOUBLE NOT NULL,
+    total_k_otras_actividades DOUBLE NOT NULL,
+    total_l_desempeños_especificos DOUBLE NOT NULL
   );
 `;
 
@@ -33,14 +34,14 @@ function insertarDatos(req, res) {
 
       // Resto del código para insertar datos
       console.log(req.body);
-      const { nombreDocente, totalA, totalB, totalC, totalD, totalE, 
+      const { nombreDocente,dniDocente, totalA, totalB, totalC, totalD, totalE, 
         totalF, totalG, totalH, totalI, totalJ, 
         totalK, totalL, total 
       } = req.body;
       
       // Ejecuta una consulta SQL para insertar los datos
-      const sql = 'INSERT INTO grilla (nombre,total_promedio,total_a_titulo,total_b_formacion_posterior,total_c_antiguedad,total_d_participacion_eventos,total_e_elaboracion_y_dictado,total_f_trabajos_investigacion,total_g_publicaciones,total_h_asistencias,total_i_otros_desempeños,total_j_cargos,total_k_otras_actividades,total_l_desempeños_especificos) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
-      db.query(sql, [ nombreDocente, total, totalA, totalB, totalC, totalD, totalE, 
+      const sql = 'INSERT INTO grilla (nombre,dni,total_promedio,total_a_titulo,total_b_formacion_posterior,total_c_antiguedad,total_d_participacion_eventos,total_e_elaboracion_y_dictado,total_f_trabajos_investigacion,total_g_publicaciones,total_h_asistencias,total_i_otros_desempeños,total_j_cargos,total_k_otras_actividades,total_l_desempeños_especificos) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+      db.query(sql, [ nombreDocente,dniDocente, total, totalA, totalB, totalC, totalD, totalE, 
         totalF, totalG, totalH, totalI, totalJ, 
         totalK, totalL ], (err, results) => {
         if (err) {
