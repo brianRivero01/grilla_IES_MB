@@ -13,6 +13,18 @@ const limiter = rateLimit({
   message: 'Demasiados intentos de inicio de sesión. Por favor, inténtalo de nuevo más tarde.',
 });
 
+const usuario='matias';
+const clave='123456';
+const queryString='INSERT INTO usuarios (nombre, contrasena) VALUES (?, ?)';
+connection.query(queryString,[usuario,clave],(error,results,fields)=>{
+  if(error){
+    console.error("error al ejecutar la consulta",error)
+  }else{
+    console.log("Consulta ejecutada con exito")
+  }
+});
+
+
 app.use(session({
   secret: '86486',
   resave: true,
@@ -34,7 +46,7 @@ app.get('/login', (req, res) => {
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post('/login', limiter, async (req, res) => {
+app.post('/login', limiter, (req, res) => {
   const { usuario, clave } = req.body;
 
   try {
