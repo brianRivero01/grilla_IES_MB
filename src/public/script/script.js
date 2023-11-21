@@ -162,12 +162,26 @@ const grupoTotales = [];
       })
         .then(response => response.json())
         .then(data => {
-          console.log(data);
+            if(data.error){
+                alert('Error al insertar datos: ' + data.error);
+            }else{
+                alert('Datos insertados correctamente');
+            }
         })
         .catch(error => {
           console.error(error);
         });
     });
+
+    //datos de login invalidos
+  document.addEventListener('DOMContentLoaded', function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const errorParam = urlParams.get('error');
+
+      if (errorParam === 'invalid_credentials') {
+          alert('datos inválidos. Vuelve a intentarlo.');
+      }
+  });
 
 
     

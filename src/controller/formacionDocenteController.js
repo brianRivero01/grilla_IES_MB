@@ -24,6 +24,16 @@ const createTableSql = `
 
 // Controlador para insertar datos en la base de datos
 function insertarDatos(req, res) {
+  // Validar que el nombre y el DNI no estén vacíos
+  const { nombreDocente, dniDocente, totalA, totalB, totalC, totalD, totalE,
+    totalF, totalG, totalH, totalI, totalJ,
+    totalK, totalL, total
+  } = req.body;
+
+  if (!nombreDocente || !dniDocente) {
+    res.status(400).json({ error: 'El nombre y el DNI son campos obligatorios' });
+    return;
+  }
   // Ejecutar la consulta SQL para crear la tabla
   db.query(createTableSql, (err, results) => {
     if (err) {
