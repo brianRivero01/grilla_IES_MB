@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datos de Profesores</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/estilo.css">
+  
+</head>
+<body>
+  <header class="header">
+    <img src="img/onlylogo.png" alt="">
+    <h1 class="h3">GRILLA DE TABULACION DE ANTECEDENTES - DESARROLLO DE SOFTWARE</h1>
+  </header>
+
+  <div class="container">
+    <nav>
+      <a href="grilla.html">Grilla</a>
+      <a href="index.html">Salir</a>
+    </nav>
+  </div>
+
+  <div class="container mt-5">
+    <h2 class="h4">Datos de profesores</h2>
+    <table class="table table-bordered" id="tablaDatos">
+      <tr>
+        <th>Nombre</th>
+        <th>DNI</th>
+        <th>A</th>
+        <th>B</th>
+        <th>C</th>
+        <th>D</th>
+        <th>E</th>
+        <th>F</th>
+        <th>G</th>
+        <th>H</th>
+        <th>I</th>
+        <th>J</th>
+        <th>K</th>
+        <th>L</th>
+        <th>Total</th>
+      </tr>
+    </table>
+  </div>
+  <!-- ... Tu HTML anterior ... -->
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // Hacer la solicitud AJAX para obtener los datos de profesores
+    $.ajax({
+      url: '/api/mostrar', // La ruta que configuraste en profesorRoutes.js
+      method: 'GET',
+      success: function(datos) {
+        // Actualizar la tabla con los datos recibidos
+        actualizarTabla(datos);
+      },
+      error: function(error) {
+        console.error('Error al obtener datos:', error);
+      }
+    });
+
+    // Función para actualizar la tabla con los datos recibidos
+    function actualizarTabla(datos) {
+      // Suponiendo que tienes una tabla con el id "tablaDatos"
+      var tabla = $('#tablaDatos');
+
+      // Limpiar la tabla
+      tabla.empty();
+
+      // Crear encabezado
+      var encabezado = $('<tr></tr>');
+      encabezado.append('<th>Nombre</th><th>DNI</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th><th>I</th><th>J</th><th>K</th><th>L</th><th>Total</th>');
+      tabla.append(encabezado);
+
+      // Iterar sobre los datos y agregar filas a la tabla
+      datos.forEach(function(profesor) {
+        var fila = $('<tr></tr>');
+        fila.append('<td>' + profesor.nombre + '</td><td>' + profesor.dni + '</td><td>'+profesor.total_a_titulo+'</td><td>'+profesor.total_b_formacion_posterior+'</td><td>'+profesor.total_c_antiguedad+'</td><td>'+profesor.total_d_participacion_eventos+'</td><td>'+profesor.total_e_elaboracion_y_dictado+'</td><td>'+profesor.total_f_trabajos_investigacion+'</td><td>'+profesor.total_g_publicaciones+'</td><td>'+profesor.total_h_asistencias+'</td><td>'+profesor.total_i_otros_desempeños+'</td><td>'+profesor.total_j_cargos+'</td><td>'+profesor.total_k_otras_actividades+'</td><td>'+profesor.total_l_desempeños_especificos+'</td><td>'+profesor.total_promedio+'</td>');
+        tabla.append(fila);
+      });
+    }
+  });
+</script>
+</body>
+</html>
+
+</body>
+</html>

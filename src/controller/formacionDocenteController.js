@@ -61,6 +61,7 @@ function insertarDatos(req, res) {
           console.log('Datos insertados en la base de datos');
           res.status(200).json({ message: 'Datos insertados correctamente' });
         }
+        
       });
     }
   });

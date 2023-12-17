@@ -166,6 +166,7 @@ const grupoTotales = [];
                 alert('Error al insertar datos: ' + data.error);
             }else{
                 alert('Datos insertados correctamente');
+                window.location.href = window.location.href;
             }
         })
         .catch(error => {
@@ -173,15 +174,7 @@ const grupoTotales = [];
         });
     });
 
-    //datos de login invalidos
-  document.addEventListener('DOMContentLoaded', function () {
-      const urlParams = new URLSearchParams(window.location.search);
-      const errorParam = urlParams.get('error');
 
-      if (errorParam === 'invalid_credentials') {
-          alert('datos inválidos. Vuelve a intentarlo.');
-      }
-  });
 
 
     
